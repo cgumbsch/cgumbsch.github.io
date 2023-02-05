@@ -18,13 +18,13 @@ site-keywords: Site, Template, Theme
 favicon-url: 
 
 # URL of the Image of Custom Hero Image (i.e., the image in the background of the very first section of the Homepage) #https://images.pexels.com/photos/220444/pexels-photo-220444.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940
-heroimage: https://www.danthermgroup.com/media/headers/_1000x280_crop_center-center_none/abstract-slim-header-image-01.jpg?v=1638782897
+heroimage: https://raw.githubusercontent.com/cgumbsch/cgumbsch.github.io/master/assets/images/art.png
 # Social Media and Contact
 # If you don't want to use any icon, you can leave them blank.
 email: chris@gumbsch.de
 facebook_username: 
 twitter_username: cgumbsch
-instagram_username: cgumbsch
+instagram_username:
 linkedin_username: cgumbsch
 github_username:  cgumbsch
 youtube_channel_id: 
