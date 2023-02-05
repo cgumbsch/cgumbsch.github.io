@@ -1,0 +1,27 @@
+---
+title: GateL0RD - Sparsely Changing Latent States for Prediction and Planning in POMDPs
+layout: post
+post-image: "/cgumbsch.github.io/assets/images/FPP_long_latent_gif.gif"
+description: Most Recurrent Neural Networks (RNNs) update their latent state in every time step. Is This necessary? In our NeurIPS 2021 paper we present GateL0RD, an RNN that only sparsely updates its memory. And this has many benefits...
+
+tags:
+- recurrent neural networks
+- partial observability
+- sparsity
+- explainability
+- generalization
+- model-predictive control
+- reinforcement learning
+---
+
+### Abstract
+
+A common approach to prediction and planning in partially observable domains is to use recurrent neural networks (RNNs), which ideally develop and maintain a latent memory about hidden, task-relevant factors. We hypothesize that many of these hidden factors in the physical world are constant over time, changing only sparsely. To study this hypothesis, we propose Gated L_0 Regularized Dynamics (GateL0RD), a novel recurrent architecture that incorporates the inductive bias to maintain stable, sparsely changing latent states.  The bias is implemented by means of a novel internal gating function and a penalty on the L_0 norm of latent state changes. We demonstrate that GateL0RD can compete with or outperform state-of-the-art RNNs in a variety of partially observable prediction and control tasks. GateL0RD tends to encode the underlying generative factors of the environment, ignores spurious temporal dependencies, and generalizes better, improving sampling efficiency and overall performance in model-based planning and reinforcement learning tasks. Moreover, we show that the developing latent states can be easily interpreted, which is a step towards better explainability in RNNs.
+
+![Test Image](/cgumbsch.github.io/assets/images/FPP_long_latent_gif.gif)
+
+
+### More information
+- [:scroll: Paper](https://openreview.net/pdf?id=-VjKyYX-PI9){:target="_blank"}
+- [:bird: Twitter thread](https://twitter.com/cgumbsch/status/1464149692355334149?s=20&t=jNkRLTfjouHmcVLAQrA1rQ){:target="_blank"}
+- [:snake: Code](https://github.com/martius-lab/GateL0RD){:target="_blank"}
