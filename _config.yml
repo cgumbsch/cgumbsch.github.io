@@ -44,7 +44,7 @@ author-name: Chris Gumbsch
 # URL for the Image of the Author
 author-image: https://raw.githubusercontent.com/cgumbsch/cgumbsch.github.io/master/assets/images/me_square.png
 # 60 Words About the Author
-author-about: Hi, my name is Christian Gumbsch. I'm a PhD student of Cognitive Science at the Max Planck Institute for Intelligent Systems and the University of Tübingen and a research fellow at the TU Dresden.
+author-about: Hi, my name is Christian Gumbsch. I'm a PhD student of Cognitive Science at the <a href="https://al.is.mpg.de/">Max Planck Institute for Intelligent Systems</a> and the University of Tübingen and a research fellow at the TU Dresden.
 # URL to the Author's Profile (i.e., Github, Twitter, Stackoverflow, etc)
 author-url: https://github.com/cgumbsch
 
