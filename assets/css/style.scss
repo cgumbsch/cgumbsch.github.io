@@ -86,26 +86,10 @@ a.navbar-item.is-active {
 //     }
 // }
 
-#hero {
-    background: rgba(250, 249, 249, 0.5);
-    background-image: url("../images/prokil_oil_painting_impressionism_abstractive_thought_bubbles_469edd05-2ed7-4141-92e8-c91b52ed3143.png");
-}
-#hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4), rgba(3,3,3,0)), linear-gradient(to top, rgba(3,3,3,0), 90%, rgba(3,3,3,0.4));;
-}
-
 .title {
-    font-size: 5rem;
     margin: auto 0.75rem!important;
 }
 .subtitle {
-    font-size: 4rem;
     letter-spacing: 0.25rem;
 }
 
