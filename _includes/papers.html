@@ -13,7 +13,7 @@
         <div id="results-container"></div>
         <!--Blog Cards Section-->
         {% for post in site.posts %}
-            {% unless post.selected == 'no' %}
+            {% unless post.selected == %}
                 {% include blog-card.html %}
             {% endunless %}
         {% endfor %}
