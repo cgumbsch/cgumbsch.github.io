@@ -79,20 +79,21 @@ hr {
     padding-right: 1.5rem;
 }
 
-#blog-card {
+.blog-card {
+    width: 100%;
     max-width: 900px;
     margin: 0 auto 1.5rem auto !important;
     align-items: center;
     justify-content: center;
 }
 
-#blog-card .title {
+.blog-card .title {
     font-size: 1.25rem !important;
     line-height: 1.25;
     margin-bottom: 0.75rem;
 }
 
-#blog-card .image {
+.blog-card .image {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
