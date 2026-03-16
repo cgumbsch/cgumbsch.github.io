@@ -80,20 +80,13 @@ hr {
 }
 
 #blog-card {
-    margin-bottom: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto 1.5rem auto;
+    align-items: center;
 }
 
 #blog-card .image {
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-}
-
-#blog-card .title {
-    font-size: 1.4rem !important;
-    line-height: 1.25;
-    margin-bottom: 0.75rem;
-}
-
-#blog-card .content {
-    font-size: 0.95rem;
+    background-repeat: no-repeat;
 }
