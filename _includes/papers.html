@@ -9,11 +9,48 @@
 
                 <!-- Toggle -->
                 <div class="has-text-centered mb-4">
-                    <label class="checkbox" style="font-size: 0.95rem; cursor: pointer;">
-                        <input type="checkbox" id="show-all-toggle">
-                        Show all papers
+                    <label class="toggle-label" style="display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer; font-size: 0.95rem; color: #888;">
+                        <span>Show all papers</span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="show-all-toggle" style="display: none;">
+                            <span class="toggle-slider"></span>
+                        </div>
                     </label>
                 </div>
+
+                <style>
+                    .toggle-switch {
+                        position: relative;
+                        width: 42px;
+                        height: 24px;
+                    }
+                    .toggle-slider {
+                        position: absolute;
+                        inset: 0;
+                        background-color: #ccc;
+                        border-radius: 24px;
+                        cursor: pointer;
+                        transition: background-color 0.25s;
+                    }
+                    .toggle-slider::before {
+                        content: "";
+                        position: absolute;
+                        width: 18px;
+                        height: 18px;
+                        left: 3px;
+                        top: 3px;
+                        background-color: white;
+                        border-radius: 50%;
+                        transition: transform 0.25s;
+                    }
+                    #show-all-toggle:checked + .toggle-slider {
+                        background-color: #363636;
+                    }
+                    #show-all-toggle:checked + .toggle-slider::before {
+                        transform: translateX(18px);
+                    }
+                </style>
+
             </div>
         </div>
 
@@ -22,7 +59,7 @@
         <!--Blog Cards Section-->
         <div id="papers-container">
             {% for post in site.posts %}
-                <div class="paper-entry" data-selected="{{ post.selected }}">
+                <div class="paper-entry" data-selected="{% if post.selected %}yes{% endif %}">
                     {% include blog-card.html %}
                 </div>
             {% endfor %}
