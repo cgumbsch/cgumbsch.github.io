@@ -1,27 +1,36 @@
 <section class="hero" id="papers">
 {% include head.html %}
-
 <body>
     {% include navbar.html %}
-
     <section class="hero is-fullheight" id="blog">
         <div class="hero-body">
             <div class="container">
                 {% include blogpage-heading.html %}
+
+                <!-- Toggle -->
+                <div class="has-text-centered mb-4">
+                    <label class="checkbox" style="font-size: 0.95rem; cursor: pointer;">
+                        <input type="checkbox" id="show-all-toggle">
+                        Show all papers
+                    </label>
+                </div>
             </div>
         </div>
+
         <div id="results-container"></div>
+
         <!--Blog Cards Section-->
-        {% for post in site.posts %}
-            {% unless post.selected == %}
-                {% include blog-card.html %}
-            {% endunless %}
-        {% endfor %}
+        <div id="papers-container">
+            {% for post in site.posts %}
+                <div class="paper-entry" data-selected="{{ post.selected }}">
+                    {% include blog-card.html %}
+                </div>
+            {% endfor %}
         </div>
+
     </section>
     <br>
     <script src="{{site.url}}{{site.baseurl}}/assets/js/simple-jekyll-search.js"></script>
-
     <script>
         SimpleJekyllSearch({
             searchInput: document.getElementById('search'),
@@ -32,6 +41,23 @@
             fuzzy: true,
         });
     </script>
-</body>
+    <script>
+        const toggle = document.getElementById('show-all-toggle');
+        const entries = document.querySelectorAll('.paper-entry');
 
+        function applyFilter() {
+            const showAll = toggle.checked;
+            entries.forEach(function(el) {
+                if (!showAll && el.dataset.selected !== 'yes') {
+                    el.style.display = 'none';
+                } else {
+                    el.style.display = '';
+                }
+            });
+        }
+
+        toggle.addEventListener('change', applyFilter);
+        applyFilter(); // apply on load (default: selected only)
+    </script>
+</body>
 </section>
