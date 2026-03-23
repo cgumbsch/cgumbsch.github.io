@@ -48,7 +48,7 @@
         function applyFilter() {
             const showAll = toggle.checked;
             entries.forEach(function(el) {
-                if (!showAll && el.dataset.selected !== 'yes') {
+                if (!showAll && el.dataset.selected !== 'true') {
                     el.style.display = 'none';
                 } else {
                     el.style.display = '';
