@@ -8,7 +8,7 @@
                 {% include blogpage-heading.html %}
 
                 <p style="font-size: 0.95rem; color: #888; margin-bottom: 1rem;">
-                    Showing selected papers. Toggle to view the full list. See <a href="https://scholar.google.de/citations?user=FQOFw5cAAAAJ&hl=de" target="_blank" style="color: #888; text-decoration: underline;">Google Scholar</a> for recent publications.
+                    Showing <span style="background-color: #eecda0; padding: 0.1em 0.4em; border-radius: 0.2em;">selected papers</span>. Toggle to view the full list. See <a href="https://scholar.google.de/citations?user=FQOFw5cAAAAJ&hl=de" target="_blank" style="color: #888; text-decoration: underline;">Google Scholar</a> for recent publications.
                 </p>
 
                 <!-- Toggle -->
@@ -64,7 +64,7 @@
         <div id="papers-container">
             {% for post in site.posts %}
                 <div class="paper-entry" data-selected="{% if post.selected %}yes{% endif %}">
-                    {% include blog-card.html %}
+                    {% include blog-card.html selected=post.selected %}
                 </div>
             {% endfor %}
         </div>
