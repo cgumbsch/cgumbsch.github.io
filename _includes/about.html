@@ -2,13 +2,13 @@
     <div class="hero-body">
         <div class="container has-text-left-desktop has-text-left-tablet">
             <div class="columns">
-                <div class="column is-one-fifth-desktop is-one-fifth-tablet is-one-fifth-fullhd">
+                <div class="column is-one-fifth-desktop is-one-fifth-tablet is-one-fifth-fullhd" id="about-photo">
                     <figure class="image">
                         <img class="is-rounded" src="{{site.author-image}}" alt="{{site.author-name}}">
                     </figure>
                 </div>
                 <br>
-                <div class="column has-text-left-desktop has-text-left-tablet has-text-left-fullhd has-text-left-widescreen">
+                <div class="column has-text-left-desktop has-text-left-tablet has-text-left-fullhd has-text-left-widescreen" id="about-text">
                     <p>{{site.author-about}}</p>
                     <br>
                     <div class="container columns is-centered">
@@ -23,9 +23,13 @@
                                 </a>
                             </div>
                             <div>
-                                <a href="https://scholar.google.de/citations?user=FQOFw5cAAAAJ&hl=de"
-                                    class="button is-rounded is-uppercase has-text-weight-normal is-black is-outlined">All Publications</a>
+                                <a href="https://scholar.google.com/citations?user=FQOFw5cAAAAJ&hl=en"
+                                    class="button is-rounded is-uppercase has-text-weight-normal is-black is-outlined">Google Scholar</a>
                                 </a>
+                            </div>
+                            <div>
+                                <a href="https://github.com/{{site.github_username}}"
+                                    class="button is-rounded is-uppercase has-text-weight-normal is-black is-outlined">GitHub</a>
                             </div>
                     </div>
                 </div>
@@ -33,6 +37,31 @@
             </div>
         </div>
 </section>
+<script>
+    /* Scale the photo relative to the text column height (incl. buttons) on tablet and up */
+    (function () {
+        var photo = document.getElementById('about-photo');
+        var text = document.getElementById('about-text');
+        var scale = 0.85;
+        function resize() {
+            photo.style.flex = '';
+            photo.style.width = '';
+            photo.style.alignSelf = '';
+            if (window.innerWidth < 769) return;
+            /* Widening the photo narrows the text, which changes its height, so iterate until stable */
+            for (var i = 0; i < 5; i++) {
+                var padding = parseFloat(getComputedStyle(text).paddingTop) + parseFloat(getComputedStyle(text).paddingBottom);
+                var size = text.offsetHeight - padding;
+                photo.style.flex = 'none';
+                photo.style.alignSelf = 'center';
+                photo.style.width = (size * scale + padding) + 'px';
+                if (Math.abs(text.offsetHeight - padding - size) < 1) break;
+            }
+        }
+        window.addEventListener('load', resize);
+        window.addEventListener('resize', resize);
+    })();
+</script>
 
 <section class="hero has-text-centered has-background-white-ter" id="research">
     <div class="hero-body">
