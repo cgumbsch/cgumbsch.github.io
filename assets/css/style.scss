@@ -421,3 +421,75 @@ section {
         }
     }
 }
+
+/*--------------------------------------------------------------
+# Research section: text + looping video
+--------------------------------------------------------------*/
+/* Justified bio and research paragraphs on tablet and up (phones keep the centered layout) */
+@media (min-width: 769px) {
+    #about-text p,
+    #research p {
+        text-align: justify;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+    }
+}
+
+.research {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.research-text {
+    flex: 1 1 55%;
+    min-width: 0;
+}
+
+.research-video {
+    flex: 1 1 45%;
+    min-width: 0;
+    margin: 0;
+
+    video {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+        object-fit: contain;
+        border: 1px solid #e3e3e3;
+        border-radius: 8px;
+    }
+
+    figcaption {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+        color: #555;
+
+        span {
+            display: block;
+        }
+    }
+
+    /* With JS, all lines share one grid cell so the caption height never changes */
+    &.js-sync figcaption {
+        display: grid;
+
+        span {
+            grid-area: 1 / 1;
+            opacity: 0;
+            transition: opacity 0.25s;
+
+            &.is-active {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .research {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+}

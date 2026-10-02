@@ -67,10 +67,76 @@
     <div class="hero-body">
         <div class="container has-text-left-desktop has-text-left-tablet">
             <p class="subtitle is-uppercase has-text-weight-medium has-text-grey">Research interest</p>
-            <p>I work toward embodied artificial intelligence that helps us tackle general problems while remaining safe and ethical. Inspired by how humans and other animals adaptively learn and act, my research bridges cognitive science, model-based reinforcement learning, and foundation models for decision-making, and is organized along three directions:</p> <br>
-            <p><b>1. Compositional world models.</b> Agents that <i>imagine</i> possible futures by composing reusable, structured knowledge of how the world works. <i>Representative work:</i> <a href="https://arxiv.org/pdf/2110.15949">GateL0RD</a> (NeurIPS 2021), <a href="https://openreview.net/pdf?id=TjCDNssXKU">THICK world models</a> (ICLR 2024).</p> <br>
-            <p><b>2. Semantic reward models.</b> Agents that <i>verify</i> whether imagined outcomes satisfy user-defined goals, using language-based foundation models. <i>Representative work:</i> <a href="https://arxiv.org/abs/2503.01584">SENSEI</a> (ICML 2025), <a href="https://arxiv.org/abs/2606.00083">Demo2Reward</a> (RLC 2026).</p> <br>
-            <p><b>3. Cognitive-inspired decision-making.</b> Agents that <i>act</i> through both hierarchical, temporally abstract planning and fast, reactive policies, drawing on how humans make decisions. <i>Representative work:</i> <a href="https://rdcu.be/cFGsE">Hierarchical RL perspective</a> (Nature Machine Intelligence, 2022), <a href="https://arxiv.org/pdf/2206.02042.pdf">HierarchicalGateL0RD</a> (ICDL 2022).</p> <br>
+            <p>Inspired by how humans learn and make decisions, my research aims to build safe, generalist embodied agents that <i>imagine</i>, <i>verify</i>, and <i>act</i>:</p> <br>
+            <div class="research">
+                <div class="research-text">
+                <p><b>1. Imagine: world models.</b> Agents that predict possible outcomes of their actions using structured and hierarchical representations of how the world works, e.g., <a href="https://openreview.net/pdf?id=TjCDNssXKU">THICK</a>, <a href="https://arxiv.org/pdf/2110.15949">GateL0RD</a>.</p> <br>
+                <p><b>2. Verify: vision-language reward models.</b> Agents that autonomously judge outcomes with vision-language models, both to check whether an outcome meets a user-defined goal and to set their own goals, e.g., <a href="https://arxiv.org/abs/2606.00083">Demo2Reward</a>, <a href="https://arxiv.org/abs/2503.01584">SENSEI</a>.</p> <br>
+                <p><b>3. Act: planning and policies.</b> Agents that act, inspired by human decision-making, through both hierarchical, temporally abstract planning and fast, reactive policies such as VLAs, e.g., <a href="https://arxiv.org/pdf/2206.02042.pdf">Hierarchical GateL0RD</a>, <a href="https://rdcu.be/cFGsE">Hierarchical RL perspective</a>.</p>
+                </div>
+                <figure class="research-video" id="research-video">
+                    <video autoplay muted loop playsinline preload="auto" poster="{{site.url}}{{site.baseurl}}/assets/videos/research_loop_poster.jpg"
+                        aria-label="Looping video: a world model predicting the future, a vision-language model detecting task success on a real robot, and a VLA policy acting in simulation">
+                        <source src="{{site.url}}{{site.baseurl}}/assets/videos/research_loop.mp4" type="video/mp4">
+                        <source src="{{site.url}}{{site.baseurl}}/assets/videos/research_loop.webm" type="video/webm">
+                    </video>
+                    <!-- Phase times (s) measured from the video: each phase fades in/out over ~0.27 s through plain background -->
+                    <figcaption>
+                        <span data-start="0.033" data-end="3.333" data-poster><strong>Imagine:</strong> Hierarchical world model predictions (THICK)</span>
+                        <span data-start="3.633" data-end="9.467"><strong>Verify:</strong> VLM success detection (Demo2Reward)</span>
+                        <span data-start="9.767" data-end="14.8"><strong>Act:</strong> VLA (OpenVLA) practices in simulation</span>
+                    </figcaption>
+                </figure>
+            </div>
         </div>
     </div>
 </section>
+<script>
+    /* Show the caption of the phase currently playing; the Imagine line while paused on the poster */
+    (function () {
+        var fig = document.getElementById('research-video');
+        var video = fig.querySelector('video');
+        var caps = Array.prototype.slice.call(fig.querySelectorAll('figcaption span'));
+        var posterCap = caps.filter(function (c) { return c.hasAttribute('data-poster'); })[0];
+        fig.classList.add('js-sync');
+        function show(cap) {
+            caps.forEach(function (c) { c.classList.toggle('is-active', c === cap); });
+        }
+        function update() {
+            if (video.paused && video.currentTime === 0) return show(posterCap);
+            var t = video.currentTime;
+            show(caps.filter(function (c) { return t >= +c.dataset.start && t < +c.dataset.end; })[0] || null);
+        }
+        function loop() {
+            update();
+            if (!video.paused) requestAnimationFrame(loop);
+        }
+        video.addEventListener('play', function () { requestAnimationFrame(loop); });
+        video.addEventListener('pause', update);
+        video.addEventListener('seeked', update);
+        /* Safety net for browsers that stop at the end despite the loop attribute */
+        video.addEventListener('ended', function () {
+            video.currentTime = 0;
+            video.play();
+        });
+        show(posterCap);
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            video.removeAttribute('autoplay');
+            video.pause();
+            /* If playback already started, reload so the poster shows again */
+            if (video.currentTime > 0) video.load();
+            video.controls = true;
+        } else if ('IntersectionObserver' in window) {
+            /* Some browsers block autoplay (e.g. Safari in Low Power Mode): once visible, try to start it, else show controls */
+            new IntersectionObserver(function (entries, observer) {
+                if (!entries[0].isIntersecting) return;
+                observer.disconnect();
+                setTimeout(function () {
+                    if (!video.paused) return;
+                    var playing = video.play();
+                    if (playing) playing.catch(function () { video.controls = true; });
+                }, 1000);
+            }).observe(video);
+        }
+    })();
+</script>
