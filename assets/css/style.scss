@@ -3,6 +3,29 @@
 
 @import "main.scss";
 
+// Accent colors, sampled from the paper figures (petrol: SUBMODES/THICK, crimson: THICK)
+$petrol: #1c6683;
+$petrol-dark: #0e405c;
+$crimson: #9d1c24;
+$crimson-dark: #6e1219;
+
+a {
+    color: $petrol;
+
+    &:hover {
+        color: $petrol-dark;
+    }
+}
+
+// Achievements (awards, spotlights, orals)
+.highlight {
+    color: $crimson;
+}
+
+a.highlight:hover {
+    color: $crimson-dark;
+}
+
 #navbar {
     opacity: 0.95;
 }
@@ -121,7 +144,7 @@ section {
     width: 120px;
     height: 1px;
     display: inline-block;
-    background: #ed3c0d;
+    background: $crimson;
     margin: 4px 10px;
   }
   .section-title p {
