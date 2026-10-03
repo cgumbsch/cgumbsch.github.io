@@ -15,27 +15,20 @@ layout: compress
   {% include footer.html %}
 </body>
 <script>
-  var navItems = document.getElementsByClassName('navbar-item');
-  var heroes = document.getElementsByClassName('hero');
-  const viewOffset = 200; 
+  /* Highlight the navbar link of the section in view (matched by id; papers.html adds a second navbar) */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.navbar-end a.navbar-item'));
+  const viewOffset = 200;
 
-  window.addEventListener("scroll", function (event) {
-    var scroll = this.scrollY;
-    var position = window.pageYOffset;
-
-    for (var i = 0; i < navItems.length; i++) {
-      navItems[i].classList.remove('is-active');
-    }
-
-    for (var i = 0; i < heroes.length; i++) {
-        var sectionTop = heroes[i].offsetTop-viewOffset;
-        var sectionBottom = heroes[i].offsetTop + heroes[i].offsetHeight-viewOffset;
-
-        if (scroll >= sectionTop && scroll < sectionBottom) {
-          if (navItems[i+1]) navItems[i+1].classList.add('is-active');
-      }
-    }
-  });
+  function highlightNav() {
+    var scroll = window.scrollY;
+    navLinks.forEach(function (link) {
+      var section = document.getElementById(link.hash.slice(1));
+      var active = section && scroll >= section.offsetTop - viewOffset && scroll < section.offsetTop + section.offsetHeight - viewOffset;
+      link.classList.toggle('is-active', !!active);
+    });
+  }
+  window.addEventListener("scroll", highlightNav);
+  highlightNav();
 </script>
 
 </html>
