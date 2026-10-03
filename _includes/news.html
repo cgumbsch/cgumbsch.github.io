@@ -1,0 +1,38 @@
+<section class="hero has-text-centered" id="news">
+    <div class="hero-body">
+        <div class="container has-text-left-desktop has-text-left-tablet">
+            <p class="subtitle is-uppercase has-text-weight-medium has-text-grey">News</p>
+            <div class="news-scroll" id="news-scroll">
+                <ul class="news-list">
+                    {% for item in site.data.news %}
+                    <li class="news-item">
+                        <span class="news-date">{{ item.date }}</span>
+                        <span class="news-text">{{ item.text }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    /* Show the first three items; the rest scroll. The fade at the bottom disappears at the end of the list */
+    (function () {
+        var box = document.getElementById('news-scroll');
+        var items = box.querySelectorAll('.news-item');
+        function resize() {
+            if (items.length <= 3) return;
+            var third = items[2];
+            /* + a peek of the next item, faded out by the CSS mask */
+            box.style.maxHeight = (third.offsetTop + third.offsetHeight + 28) + 'px';
+            fade();
+        }
+        function fade() {
+            box.classList.toggle('is-end', box.scrollTop + box.clientHeight >= box.scrollHeight - 1);
+        }
+        box.addEventListener('scroll', fade);
+        window.addEventListener('load', resize);
+        window.addEventListener('resize', resize);
+        resize();
+    })();
+</script>

@@ -1,0 +1,13 @@
+# Newest first. "text" may contain HTML links.
+- date: Sep 30, 2026
+  text: 'Three workshop papers accepted at NeurIPS 2026 (RoboPad, AI4GOOD). Links coming soon!'
+- date: Jul 17, 2026
+  text: 'We organize the <a href="https://robot-worldmodels.github.io/index.html">Robot World Models workshop</a> at RSS 2026.'
+- date: Jun 18, 2026
+  text: 'Our paper "<a href="https://arxiv.org/abs/2604.27106">Reconstruction by Generation: 3D Multi-Object Scene Reconstruction from Sparse Observations</a>" has been accepted at ECCV 2026!'
+- date: Jun 3, 2026
+  text: 'Invited talk "<a href="https://uni-freiburg.de/brainlinks-braintools/imagine-verify-act-robot-planning-with-world-models-and-vision-language-evaluators/">Imagine, Verify, Act: Robot Planning with World Models and Vision-Language Evaluators</a>" at the University of Freiburg (host: Abhinav Valada).'
+- date: May 6, 2026
+  text: 'Our paper "<a href="https://arxiv.org/abs/2606.00083">From Demonstrations to Rewards: Test-Time Prompt Optimization for VLM Reward Models</a>" has been accepted at RLC 2026!'
+- date: Apr 8, 2026
+  text: 'Our paper "<a href="https://charleywu.github.io/downloads/orujlu2026causal.pdf">Causal Process Models: Reframing Dynamic Causal Graph Discovery as a Reinforcement Learning Problem</a>" has been accepted at CLeaR 2026!'

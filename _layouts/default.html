@@ -9,6 +9,7 @@ layout: compress
 <body>
   {% include navbar.html %}
   {% include about.html %}
+  {% include news.html %}
   {% include papers.html %}
   <!--{% include contact.html %} here-->
   {% include footer.html %}
@@ -31,7 +32,7 @@ layout: compress
         var sectionBottom = heroes[i].offsetTop + heroes[i].offsetHeight-viewOffset;
 
         if (scroll >= sectionTop && scroll < sectionBottom) {
-          navItems[i+1].classList.add('is-active');
+          if (navItems[i+1]) navItems[i+1].classList.add('is-active');
       }
     }
   });

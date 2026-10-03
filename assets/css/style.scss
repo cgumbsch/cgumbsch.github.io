@@ -423,6 +423,40 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Homepage: half the default vertical space between sections
+--------------------------------------------------------------*/
+#home,
+#research,
+#news,
+#papers {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    > .hero-body {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+}
+
+/* Keep the original space below the fixed navbar at the top of the page */
+#home {
+    padding-top: 60px;
+
+    > .hero-body {
+        padding-top: 48px;
+    }
+}
+
+/* The papers list is a section nested in #papers: no extra space on top */
+#papers #blog {
+    padding-top: 0;
+
+    > .hero-body {
+        padding-top: 0;
+    }
+}
+
+/*--------------------------------------------------------------
 # Research section: text + looping video
 --------------------------------------------------------------*/
 /* Justified bio and research paragraphs on tablet and up (phones keep the centered layout) */
@@ -491,5 +525,71 @@ section {
     .research {
         flex-direction: column-reverse;
         align-items: stretch;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# News: scrollable list, first three items visible
+--------------------------------------------------------------*/
+.news-scroll {
+    /* Thin, light scrollbar instead of the site-wide dark one */
+    scrollbar-width: thin;
+    scrollbar-color: #d0d0d0 transparent;
+    position: relative;
+    max-height: 14rem; /* without JS: roughly three items */
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 0.75rem;
+    /* Fade out the bottom edge to hint that the list scrolls */
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 2rem), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 2rem), transparent);
+
+    &.is-end {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}
+
+.news-list {
+    text-align: left;
+}
+
+.news-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid #e3e3e3;
+
+    &:first-child {
+        border-top: none;
+        padding-top: 0;
+    }
+}
+
+.news-date {
+    flex: 0 0 7.5rem;
+    white-space: nowrap;
+    padding-top: 0.15rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #7a7a7a;
+}
+
+.news-text {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .news-item {
+        flex-direction: column;
+        gap: 0.15rem;
+    }
+
+    .news-date {
+        flex: none;
     }
 }
