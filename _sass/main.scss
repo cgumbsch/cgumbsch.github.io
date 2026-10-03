@@ -24,12 +24,13 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #363636 !important;
+    background: #d0d0d0 !important;
+    border-radius: 0.25vmax;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: black !important;
+    background: #a0a0a0 !important;
 }
 
 ::placeholder {
